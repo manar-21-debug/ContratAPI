@@ -24,6 +24,18 @@ public class PrestataireEntity extends GenericEntity{
 private String libelle;
     private long idPrestation;
 
+
+    private ContratEntity contrat;
+
+    @OneToOne(mappedBy = "prestataire")
+    public ContratEntity getContrat() {
+        return contrat;
+    }
+
+    public void setContrat(ContratEntity contrat) {
+        this.contrat = contrat;
+    }
+
     public long getIdPrestation() {
         return idPrestation;
     }

@@ -2,7 +2,6 @@ package ma.bkam.contratapi.service.implementation;
 
 import ma.bkam.contratapi.common.client.MsZoneApi;
 import ma.bkam.contratapi.common.dto.ContratDTO;
-import ma.bkam.contratapi.common.dto.naturePrestation.NaturePrestationDTO;
 import ma.bkam.contratapi.common.dto.zone.ZoneDTO;
 import ma.bkam.contratapi.common.utils.MessagesCodes;
 import ma.bkam.contratapi.common.utils.Utilities;
@@ -34,10 +33,8 @@ public class ContratServiceImpl implements ContratService {
 
     @Override
     public ContratDTO add(ContratDTO contrat) {
-        if(contrat != null){
+        if(contrat != null && contrat.getPrestataire()!=null){
             long id=contrat.getIdZone();
-                Optional<ZoneDTO> theExisted=Optional.empty();
-                 theExisted=getZoneByID(id);
             if(getZoneByID(id).isPresent()){
                 return   repository.save(contrat.convertToEntity()).convertToDto();
             }

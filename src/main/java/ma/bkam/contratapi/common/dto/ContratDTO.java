@@ -3,6 +3,7 @@ package ma.bkam.contratapi.common.dto;
 import ma.bkam.contratapi.dao.model.ContratEntity;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class ContratDTO extends GenericDTO{
 
@@ -10,8 +11,15 @@ public class ContratDTO extends GenericDTO{
     private long idZone;
     private Date dateDebut;
     private Date dateFin;
+    private PrestatireDTO prestataire;
 
+    public PrestatireDTO getPrestataire() {
+        return prestataire;
+    }
 
+    public void setPrestataire(PrestatireDTO prestataire) {
+        this.prestataire = prestataire;
+    }
 
     public long getIdZone() {
         return idZone;
@@ -46,6 +54,7 @@ public class ContratDTO extends GenericDTO{
         contrat.setDateFin(this.dateFin);
         contrat.setDateDebut(this.dateDebut);
         contrat.setIdZone(this.idZone);
+        contrat.setPrestataire(Objects.isNull(this.prestataire) ? null : this.prestataire.convertToEntity());
         return contrat;
     }
 

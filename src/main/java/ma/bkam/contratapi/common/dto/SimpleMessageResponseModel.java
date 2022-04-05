@@ -1,6 +1,13 @@
 package ma.bkam.contratapi.common.dto;
 
 public class SimpleMessageResponseModel {
+    public SimpleMessageResponseModel() {
+    }
+
+    public SimpleMessageResponseModel(String message) {
+        this.message = message;
+    }
+
     private String message;
 
     public String getMessage() {

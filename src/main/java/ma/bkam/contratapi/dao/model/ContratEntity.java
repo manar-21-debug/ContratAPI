@@ -2,10 +2,12 @@ package ma.bkam.contratapi.dao.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import ma.bkam.contratapi.common.dto.ContratDTO;
+import ma.bkam.contratapi.common.dto.PrestatireDTO;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity(name="CONTRAT")
 public class ContratEntity extends GenericEntity{
@@ -28,6 +30,18 @@ public class ContratEntity extends GenericEntity{
     @NonNull
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateFin;
+
+    private PrestataireEntity prestataire;
+
+    @OneToOne
+    @JoinColumn(name = "idPrestatire", referencedColumnName = "id")
+    public PrestataireEntity getPrestataire() {
+        return prestataire;
+    }
+
+    public void setPrestataire(PrestataireEntity prestataire) {
+        this.prestataire = prestataire;
+    }
 
     private long idZone;
 
@@ -63,6 +77,7 @@ public class ContratEntity extends GenericEntity{
         contrat.setDateDebut(this.dateDebut);
         contrat.setDateFin(this.dateFin);
         contrat.setIdZone(this.idZone);
+        contrat.setPrestataire(Objects.isNull(this.prestataire)? new PrestatireDTO():this.prestataire.convertToDto());
         return contrat;
     }
 }

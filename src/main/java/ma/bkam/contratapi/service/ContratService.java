@@ -1,7 +1,6 @@
 package ma.bkam.contratapi.service;
 
 import ma.bkam.contratapi.common.dto.ContratDTO;
-import ma.bkam.contratapi.common.dto.naturePrestation.NaturePrestationDTO;
 import ma.bkam.contratapi.common.dto.zone.ZoneDTO;
 
 import java.util.List;
